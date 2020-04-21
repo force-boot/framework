@@ -1,4 +1,3 @@
-# kiloPHP-framework
 KiloPHP V1.0 - 基于PHP7的简单快速的轻量级php框架
 ===============
 ## 概要
