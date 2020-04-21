@@ -58,7 +58,8 @@ class Twig extends Environment
                 'session' => request()->session(),
                 'domain' => request()->domain(),
                 'host' => request()->host(),
-                'ip' => request()->ip()
+                'ip' => request()->ip(),
+                'isMoblie' => request()->isMobile()
             ]
         ]);
     }
