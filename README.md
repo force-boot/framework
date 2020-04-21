@@ -11,15 +11,15 @@ KiloPHP V1.0 - 基于PHP7的简单快速的轻量级php框架
 * 独立多应用支持
 * 表单令牌，session，cookie管理，缓存，安全过滤等
 * 易扩展，代码规范，注释，文档齐全
-* 轻量，快速，利于学习，开发中小项目
+* 轻量，快速，利于学习
 * 更多参见文档和代码，该项目还在更新维护中
 
-> 运行环境要求PHP7.1+。
+> 运行环境要求PHP7.0+。
 
 ## 安装
 
 ~~~
-composer create-project kilo/kilophp
+composer create-project kilo/kilophp kilo
 ~~~
 
 ## 文档
