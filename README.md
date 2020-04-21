@@ -24,6 +24,7 @@ composer create-project kilo/kilophp
 
 ## 文档
 
+https://www.kancloud.cn/xiejiawei/kilophp
 
 ## 命名规范
 
