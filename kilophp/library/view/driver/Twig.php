@@ -36,6 +36,17 @@ class Twig extends Environment
             'debug' => config('template.debug') //是否开启调试
         ]);
         //注册Twig全局变量
+        $this->registerGlobal();
+        //动态注册函数
+        $this->autoRegisterFunction();
+    }
+
+    /**
+     * 注册全局变量
+     * @access public
+     */
+    public function registerGlobal()
+    {
         $this->addGlobal('app', [
             'request' => [
                 'get' => request()->get(),
@@ -50,7 +61,6 @@ class Twig extends Environment
                 'ip' => request()->ip()
             ]
         ]);
-        $this->autoRegisterFunction();
     }
 
 
