@@ -71,6 +71,16 @@ class Request
     ];
 
     /**
+     * @var array|mixed cookie
+     */
+    protected $cookie;
+
+    /**
+     * @var array|mixed session
+     */
+    protected $session;
+
+    /**
      * @var false|string php://input
      */
     protected $input;
@@ -110,7 +120,7 @@ class Request
 
     /**
      * 解析路由Url
-     * @param $url
+     * @param $url string
      * @access public
      */
     public function parseUrl(string $url = '')
@@ -334,12 +344,12 @@ class Request
      * 生成请求令牌
      * @access public
      * @param string $name 令牌名称
-     * @param mixed  $type 令牌生成方法
+     * @param mixed $type 令牌生成方法
      * @return string
      */
     public function token($name = '__token__', $type = 'md5')
     {
-        $type  = is_callable($type) ? $type : 'md5';
+        $type = is_callable($type) ? $type : 'md5';
         $token = call_user_func($type, $_SERVER['REQUEST_TIME_FLOAT']);
         if ($this->isAjax()) {
             header($name . ': ' . $token);
@@ -358,6 +368,59 @@ class Request
     public function request($name = '', $default = null, $filter = '')
     {
         return $this->input($_REQUEST, $name, $default, $filter);
+    }
+
+
+    /**
+     * 获取session数据
+     * @access public
+     * @param string|array $name 数据名称
+     * @param string $default 默认值
+     * @param string|array $filter 过滤方法
+     * @return mixed
+     */
+    public function session($name = '', $default = null, $filter = '')
+    {
+        if (empty($this->session)) {
+            $this->session = Session::get();
+        }
+        if (is_array($name)) {
+            return $this->session = array_merge($this->session, $name);
+        }
+        return $this->input($this->session, $name, $default, $filter);
+    }
+
+    /**
+     * 获取cookie参数
+     * @access public
+     * @param string|array $name 数据名称
+     * @param string $default 默认值
+     * @param string|array $filter 过滤方法
+     * @return mixed
+     */
+    public function cookie($name = '', $default = null, $filter = '')
+    {
+        if (empty($this->cookie)) {
+            $this->cookie = Cookie::get();
+        }
+        if (is_array($name)) {
+            return $this->cookie = array_merge($this->cookie, $name);
+        } elseif (!empty($name)) {
+            $data = Cookie::has($name) ? Cookie::get($name) : $default;
+        } else {
+            $data = $this->cookie;
+        }
+
+        // 解析过滤器
+        $filter = $this->getFilter($filter, $default);
+
+        if (is_array($data)) {
+            array_walk_recursive($data, [$this, 'filterValue'], $filter);
+            reset($data);
+        } else {
+            $this->filterValue($data, $name, $filter);
+        }
+        return $data;
     }
 
     /**
@@ -493,7 +556,7 @@ class Request
     /**
      * 设置或者获取当前的应用名
      * @access public
-     * @param string $module 应用名
+     * @param string $app 应用名
      * @return string|Request
      */
     public function app(string $app = null)
