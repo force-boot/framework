@@ -12,7 +12,7 @@ namespace kilophp;
  * 基础控制器类
  * Class BaseController
  * @author XieJiaWei<print_f@hotmail.com>
- * @version 1.0.2
+ * @version 1.0.3
  */
 abstract class Controller
 {
@@ -22,6 +22,14 @@ abstract class Controller
      */
     protected $view = null;
 
+    /**
+     * @var string request对象
+     */
+    protected $request;
+    /**
+     * @var string 当前应用
+     */
+    protected $app;
     /**
      * @var string 当前访问的控制器
      */
@@ -45,6 +53,10 @@ abstract class Controller
     {
         //获取模板引擎实例
         $this->view = View::instance();
+        //获取request对象
+        $this->request = request();
+        //当前应用
+        $this->action = request()->app();
         //当前控制器
         $this->controller = request()->controller();
         //当前方法
