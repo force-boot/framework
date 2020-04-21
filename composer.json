@@ -1,0 +1,29 @@
+{
+  "name": "kilo/kilophp",
+  "description": "kilophp Framework",
+  "type": "project",
+  "keywords": [
+    "framework",
+    "kilophp",
+    "kiloframe",
+    "kiloframework"
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "filp/whoops": "^2.7",
+    "twig/twig": "~1.0",
+    "nikic/fast-route": "^1.3",
+    "illuminate/database": "^7.6"
+  },
+  "autoload": {
+    "files": [
+      "kilophp/library/helper/Helper.php",
+      "app/common.php"
+    ],
+    "psr-4": {
+      "app\\": "app",
+      "kilophp\\": "kilophp/library",
+      "kilophp\\vendor\\": "kilophp/vendor"
+    }
+  }
+}
