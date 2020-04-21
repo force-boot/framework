@@ -86,10 +86,10 @@ final class App
         ]);
         //加载应用配置文件
         Config::load(APP_DIR . 'config');
-        //实例化控制器
-        $controller = self::controller($controller, $app);
         //初始化database组件
         Database::init();
+        //实例化控制器
+        $controller = self::controller($controller, $app);
         //执行方法
         if (method_exists($controller, $action)) {
             return $controller->$action();
