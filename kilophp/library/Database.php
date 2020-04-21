@@ -20,7 +20,7 @@ class Database
 {
 
     /**
-     * @var Db 保存实例
+     * @var Manager 保存实例
      */
     private static $instance = [];
 
