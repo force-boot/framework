@@ -103,9 +103,9 @@ final class App
      * @static
      * @param string $url
      * @param array|string $vars 支持数组和字符串
-     * @param bool $domain 是否添加域名
+     * @param bool|string $domain 是否添加域名
      * @access public
-     * @return array|string
+     * @return string
      */
     public static function url(string $url, $vars = null, $domain = false): string
     {
