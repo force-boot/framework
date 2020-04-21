@@ -5,9 +5,15 @@
   "keywords": [
     "framework",
     "kilophp",
-    "kiloframe",
-    "kiloframework"
+    "ORM"
   ],
+  "license": "MIT",
+      "authors": [
+        {
+            "name": "xiejiawei",
+            "email": "print_f@hotmail.com"
+        }
+    ],
   "require": {
     "php": ">=7.0.0",
     "filp/whoops": "^2.7",
