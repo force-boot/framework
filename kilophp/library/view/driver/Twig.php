@@ -19,7 +19,7 @@ use Twig_SimpleFunction;
  * twig模板引擎
  * @package kilophp\view\driver
  * @author XieJiaWei<print_f@hotmail.com>
- * @version 1.0.0
+ * @version 1.0.2
  */
 class Twig extends Environment
 {
