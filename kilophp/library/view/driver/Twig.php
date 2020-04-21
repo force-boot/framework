@@ -35,6 +35,21 @@ class Twig extends Environment
             'charset' => config('base.charset'),//设置显示字符集
             'debug' => config('template.debug') //是否开启调试
         ]);
+        //注册Twig全局变量
+        $this->addGlobal('app', [
+            'request' => [
+                'get' => request()->get(),
+                'post' => request()->post(),
+                'method' => request()->method(),
+                'server' => request()->server(),
+                'request' => request()->request(),
+                'cookie' => request()->cookie(),
+                'session' => request()->session(),
+                'domain' => request()->domain(),
+                'host' => request()->host(),
+                'ip' => request()->ip()
+            ]
+        ]);
         $this->autoRegisterFunction();
     }
 
