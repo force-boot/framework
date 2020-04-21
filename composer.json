@@ -7,13 +7,15 @@
     "kilophp",
     "ORM"
   ],
+  "homepage": "https://kiloframe.github.io/kiloPHP-framework/",
   "license": "MIT",
-      "authors": [
-        {
-            "name": "xiejiawei",
-            "email": "print_f@hotmail.com"
-        }
-    ],
+  "authors": [
+    {
+      "name": "xiejiawei",
+      "email": "print_f@hotmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
   "require": {
     "php": ">=7.0.0",
     "filp/whoops": "^2.7",
