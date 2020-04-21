@@ -148,13 +148,13 @@ final class App
      * @static
      * @access public
      * @param $name string 模型名称
-     * @param string $module 应用
+     * @param string $app 应用
      * @return object
      * @throws Exception
      */
-    public static function model(string $name, string $module = '')
+    public static function model(string $name, string $app = '')
     {
-        return self::loader($name, 'model', $module);
+        return self::loader($name, 'model', $app);
     }
 
     /**
@@ -162,13 +162,13 @@ final class App
      * @static
      * @access public
      * @param $name string 控制器名称
-     * @param string $module 应用
+     * @param string $app 应用
      * @return  object
      * @throws Exception
      */
-    public static function controller(string $name, string $module = '')
+    public static function controller(string $name, string $app = '')
     {
-        return self::loader($name, 'controller', $module);
+        return self::loader($name, 'controller', $app);
     }
 
     /**
