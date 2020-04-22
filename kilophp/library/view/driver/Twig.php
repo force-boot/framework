@@ -12,7 +12,6 @@ use Twig\Loader\FilesystemLoader;
 
 use Twig\Environment;
 
-use Twig\Loader\LoaderInterface;
 use Twig_SimpleFunction;
 
 /**
