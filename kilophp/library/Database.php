@@ -46,7 +46,11 @@ class Database
             $capsule = new Manager();
             $option = self::paserConfig($config);
             foreach ($option as $linkId => $connection) {
-                $capsule->addConnection($connection, $linkId);
+                if (is_array($connection)) {
+                    $capsule->addConnection($connection, $linkId);
+                }else{
+                    $capsule->addConnection($option);
+                }
             }
             $capsule->setAsGlobal();
             $capsule->bootEloquent();
