@@ -23,7 +23,6 @@ use Twig_SimpleFunction;
  */
 class Twig extends Environment
 {
-
     /**
      * Twig constructor.
      */
@@ -45,9 +44,9 @@ class Twig extends Environment
      * 注册全局变量
      * @access public
      */
-    public function registerGlobal()
+    protected function registerGlobal()
     {
-        $this->addGlobal('app', [
+        $global = [
             'request' => [
                 'get' => request()->get(),
                 'post' => request()->post(),
@@ -60,8 +59,10 @@ class Twig extends Environment
                 'host' => request()->host(),
                 'ip' => request()->ip(),
                 'isMoblie' => request()->isMobile()
-            ]
-        ]);
+            ],
+            'config' => config()
+        ];
+        $this->addGlobal('app', $global);
     }
 
 
@@ -69,7 +70,7 @@ class Twig extends Environment
      * 动态注册函数
      * @access private
      */
-    private function autoRegisterFunction()
+    protected function autoRegisterFunction()
     {
         $this->registerUndefinedFunctionCallback(function ($name) {
             if (function_exists($name)) {
